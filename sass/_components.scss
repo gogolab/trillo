@@ -15,6 +15,12 @@
     justify-content: center;
     align-items: center;
 
+    @media only screen and (max-width: $bp-smallest) {
+        order: 1;
+        flex: 0 0 100%;
+        background-color: var(--color-grey-light-2);
+    }
+
     &__input {
         font-family: inherit;
         font-size: inherit;
@@ -132,12 +138,24 @@
     font-size: 1.4rem;
     margin-top: 3.5rem;
 
+    @media only screen and (max-width: $bp-medium) {
+        display: flex;
+        margin: 0;
+    }
+
     &__item {
-        // background-color: springgreen; //proto
         position: relative;
 
         &:not(:last-child) {
             margin-bottom: 0.4rem;
+
+            @media only screen and (max-width: $bp-medium) {
+                margin-bottom: 0;
+            }
+        }
+
+        @media only screen and (max-width: $bp-medium) {
+            flex: 1;
         }
     }
 
@@ -169,13 +187,22 @@
         color: var(--color-grey-light-1);
         text-decoration: none;
         text-transform: uppercase;
-        display: block;
         padding: 1.5rem 3rem;
         z-index: 10;
         position: relative;
 
         display: flex;
         align-items: center;
+
+        @media only screen and (max-width: $bp-medium) {
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            flex-direction: column;
+            padding: 1rem 0;
+        }
     }
 
     &__icon {
@@ -183,6 +210,13 @@
         height: 1.75rem;
         margin-right: 2rem;
         fill: currentColor;
+
+        @media only screen and (max-width: $bp-small) {
+            margin-right: 0;
+            margin-bottom: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 }
 
@@ -194,6 +228,10 @@
     color: var(--color-grey-light-4);
     padding: 2.5rem;
     text-align: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        display: none;
+    }
 }
 
 //////////////////////
@@ -222,6 +260,11 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 1.5rem 3rem;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+            padding: 1.25rem 2rem;
+        }
     }
 
     &__stars {
@@ -257,17 +300,29 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 0 1.5rem;
+        }
     }
 
     &__rating-average {
         font-size: 2.25rem;
         font-weight: 300;
         margin-bottom: -3px;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+        }
     }
 
     &__rating-count {
         font-size: 0.8rem;
         text-transform: uppercase;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 0.5rem;
+        }
     }
 }
 
@@ -358,14 +413,18 @@
         margin-right: 0.7rem;
 
         //older browsers
-        // background-image: url(../img/chevron-thin-right.svg);
-        // background-size: cover;
+        background-image: url(../img/chevron-thin-right.svg);
+        background-size: cover;
 
-        background-color: var(--color-primary);
-        -webkit-mask-image: url(../img/chevron-thin-right.svg);
-        mask-image: url(../img/chevron-thin-right.svg);
-        -webkit-mask-size: cover;
-        mask-size: cover;
+        @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+            background-color: var(--color-primary);
+            -webkit-mask-image: url(../img/chevron-thin-right.svg);
+            mask-image: url(../img/chevron-thin-right.svg);
+            -webkit-mask-size: cover;
+            mask-size: cover;
+
+            background-image: none;
+        }
     }
 }
 
@@ -397,6 +456,7 @@
     }
 
     &__friends {
+        display: flex;
     }
 }
 
@@ -407,8 +467,13 @@
     background-color: #ffffff;
     box-shadow: var(--shadow-light);
     padding: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     position: relative;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
 
     &::before {
         content: "\201C";
@@ -468,6 +533,10 @@
 .cta {
     padding: 3.5rem;
     text-align: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 2.5rem 0;
+    }
 
     &__book-now {
         font-size: 2rem;
@@ -535,11 +604,3 @@
         border: 0;
     }
 }
-
-// .btn:hover .btn__visible {
-//     transform: translateY(100%);
-// }
-
-// .btn:hover .btn__invisible {
-//     transform: translateY(100%);
-// }
